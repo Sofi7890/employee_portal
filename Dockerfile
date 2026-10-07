@@ -22,8 +22,8 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 # Copy our WAR as ROOT application
 COPY --from=build /app/target/ems-system.war /usr/local/tomcat/webapps/ROOT.war
 
-# Render uses PORT environment variable
+# Render's port
 EXPOSE 10000
 
-# Change Tomcat port from 8080 to Render's PORT
-CMD ["sh", "-c", "sed -i \"s/port=\\\"8080\\\"/port=\\\"${PORT:-10000}\\\"/\" /usr/local/tomcat/conf/server.xml && catalina.sh run"]
+# Configure Tomcat for Render
+CMD ["sh", "-c", "sed -i 's/port=\"8005\"/port=\"-1\"/' /usr/local/tomcat/conf/server.xml && sed -i \"s/port=\\\"8080\\\"/port=\\\"${PORT:-10000}\\\"/\" /usr/local/tomcat/conf/server.xml && catalina.sh run"]
