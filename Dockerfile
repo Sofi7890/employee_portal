@@ -4,6 +4,7 @@
 FROM maven:3.9-eclipse-temurin-17 AS build
 
 WORKDIR /app
+RUN getent hosts mysql-183e7873-safiyahhshaikhhhh-c8f0.a.aivencloud.com
 
 COPY pom.xml .
 COPY src ./src
