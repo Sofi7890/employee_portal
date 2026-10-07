@@ -1,0 +1,15 @@
+-- New optional attendance location fields.
+-- The application already uses Hibernate hbm2ddl.auto=update, so these
+-- columns should be created automatically when the application starts.
+--
+-- If your MySQL version does not support ADD COLUMN IF NOT EXISTS,
+-- add the columns manually only when they do not already exist:
+--
+-- ALTER TABLE attendance_records ADD COLUMN attendance_type VARCHAR(20);
+-- ALTER TABLE attendance_records ADD COLUMN latitude DOUBLE;
+-- ALTER TABLE attendance_records ADD COLUMN longitude DOUBLE;
+--
+-- D.G. Ruparel College geofence:
+-- Latitude  : 19.028042
+-- Longitude : 72.845149
+-- Radius    : 200 meters
