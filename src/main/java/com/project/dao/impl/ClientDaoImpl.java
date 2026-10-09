@@ -56,11 +56,18 @@ public class ClientDaoImpl implements ClientDao {
         return q.uniqueResultOptional();
     }
 
-    @Override
+    /*@Override
     public List<Client> findAll() {
         List<Client> list = current().createQuery("from Client where active = true or active is null", Client.class).getResultList();
         return list; // already a List, use streams in service if need sorting/filtering
-    }
+    }*/
+
+@Override
+public List<Client> findAll() {
+    return current()
+            .createQuery("from Client", Client.class)
+            .getResultList();
+}
 
     @Override
     public List<Project> getProjectsByClientId(String clientId) {
